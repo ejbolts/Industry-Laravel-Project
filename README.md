@@ -1,66 +1,79 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Industry Management Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a university project and is a Laravel-based web application designed to connect students with industry partners for real-world project collaborations within a university setting.
 
-## About Laravel
+## Description 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project, developed as part of a web development course at the university, represents a practical exploration into the Laravel framework. Initially hosted on the university's cloud servers for development, the application was subsequently migrated to an Amazon EC2 micro instance for production hosting to feature on my portfolio.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The primary objective of this project was to gain hands-on experience with key Laravel features, including the Eloquent ORM, Blade templating, and advanced routing capabilities. The application facilitates a dynamic interaction between two primary user groups: students and industry partners.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+For students, the application offers a platform to create and customise their profiles, showcasing their skills and academic achievements. They can actively browse and apply to various projects posted by industry partners, enabling them to engage with real-world scenarios and opportunities.
 
-## Learning Laravel
+On the other side, industry partners, who are registered and verified by a teacher (credentials pre-stored in the database), can use the platform to post new projects. These projects are tailored to specific academic semesters and years, allowing for a structured and timely collaboration with the student community.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Just like any other PHP framework, you'll need a server to run it. I recommend XAMPP and using the Apache server it comes with and set up a virtual host on port 80 for HTTP access. 
+```
+<VirtualHost 127.0.0.1:80>
+    ServerName [YourServerName]
+    DocumentRoot /var/www/industryproject/public
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    <Directory “D:\laravel-gkb\public”>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+        Order Deny,Allow
+        Allow from all
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
 
-## Laravel Sponsors
+The Laravel framework has a few system requirements. You should ensure that your web server has the following minimum PHP version and extensions see: https://laravel.com/docs/8.x/deployment#server-requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+    PHP >= 8.1
+    Ctype PHP Extension
+    cURL PHP Extension
+    DOM PHP Extension
+    Fileinfo PHP Extension
+    Filter PHP Extension
+    Hash PHP Extension
+    Mbstring PHP Extension
+    OpenSSL PHP Extension
+    PCRE PHP Extension
+    PDO PHP Extension
+    Session PHP Extension
+    Tokenizer PHP Extension
+    XML PHP Extension
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Installing
 
-## Contributing
+Create .env file following the .env.example don't need all variables
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Configure the app key
+```
+php artisan key:generate
+```
+Change DB_CONNECTION to SQLite
+```
+DB_CONNECTION=sqlite
+```
+Keep APP_URL as localhost and APP_ENV=local
+```
+APP_ENV=local
+APP_URL=http://localhost
+```
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Install all dependencies
+```
+composer install
+npm install
+```
+If needed rollback and re-run all migrations
+```
+php artisan migrate:refresh --seed
+```
