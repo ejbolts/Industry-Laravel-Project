@@ -22,7 +22,7 @@ Just like any other PHP framework, you'll need a server to run it. I recommend X
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-    <Directory “D:\laravel-gkb\public”>
+    <Directory /var/www/industryproject>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride all
         Order Deny,Allow
